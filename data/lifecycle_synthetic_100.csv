@@ -1,0 +1,101 @@
+part_number,ean_code,product_family,description,stibo_code,oaa_live,replacement_part,replacement_product_link,last_order_date,discontinuation_notice_url,source_last_modified
+SYN-CJ2M-CPU11,4543787468844,SYN-CJ2M,CJ2M Modular PLC CPU Unit,ZZ,true,SYN-NX102-9120,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-9120,2020-08-17,https://example.omron.test/notices/DN-2020-1021,2026-05-12 03:44:00
+SYN-CJ2M-CPU12,4562434054945,SYN-CJ2M,CJ2M Modular PLC CPU Unit,ZZ,true,SYN-NX102-1200,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-1200,2019-02-03,https://example.omron.test/notices/DN-2019-1022,2026-04-13 12:14:00
+SYN-CJ2M-CPU13,4582653717400,SYN-CJ2M,CJ2M Modular PLC CPU Unit,CZ,true,SYN-NX102-1201,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-1201,2020-05-03,https://example.omron.test/notices/DN-2020-1023,2026-01-10 13:25:00
+SYN-CJ2M-CPU31,4563205137313,SYN-CJ2M,CJ2M Modular PLC CPU Unit,CZ,true,SYN-NX102-1200,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-1200,2020-04-13,https://example.omron.test/notices/DN-2020-1024,2026-07-08 15:48:00
+SYN-CJ2M-CPU32,4568349057419,SYN-CJ2M,CJ2M Modular PLC CPU Unit,CZ,true,SYN-NX102-9001,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-9001,2023-12-12,https://example.omron.test/notices/DN-2023-1025,2026-07-28 13:48:00
+SYN-CJ2M-CPU33,4546093783620,SYN-CJ2M,CJ2M Modular PLC CPU Unit,CZ,true,SYN-NX102-9000,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-9000,2020-10-25,https://example.omron.test/notices/DN-2020-1026,2026-06-10 12:02:00
+SYN-CJ2M-CPU34,4526159428332,SYN-CJ2M,CJ2M Modular PLC CPU Unit,CZ,true,,,2023-05-28,https://example.omron.test/notices/DN-2023-1027,2026-06-24 13:01:00
+SYN-CJ2M-CPU35,4585691034370,SYN-CJ2M,CJ2M Modular PLC CPU Unit,CA,true,,,,,2026-08-29 03:38:00
+SYN-CJ2M-MD211,4551234026739,SYN-CJ2M,CJ2M Modular PLC CPU Unit,CZ,true,,,,,2026-07-25 17:51:00
+SYN-CS1G-CPU42H,4500221659236,SYN-CS1,CS1 Rack PLC Unit,ZZ,true,SYN-CJ2M-CPU31,https://example.omron.test/en/us/products/family/syn-cj2m/SYN-CJ2M-CPU31,2019-01-31,https://example.omron.test/notices/DN-2019-1029,2026-07-15 03:10:00
+SYN-CS1G-CPU43H,4513770771437,SYN-CS1,CS1 Rack PLC Unit,ZZ,true,SYN-NX102-1200,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-1200,2021-12-24,https://example.omron.test/notices/DN-2021-1030,2026-08-19 13:21:00
+SYN-CS1G-CPU44H,4564829496358,SYN-CS1,CS1 Rack PLC Unit,ZZ,true,SYN-NX102-1200,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-1200,2019-01-26,https://example.omron.test/notices/DN-2019-1031,2026-03-16 18:37:00
+SYN-CS1W-BC083,4555138736495,SYN-CS1,CS1 Rack PLC Unit,ZZ,true,,,,,2026-06-18 15:09:00
+SYN-CS1W-CN226,4568853438885,SYN-CS1,CS1 Rack PLC Unit,CZ,true,SYN-NX102-9120,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-9120,2020-09-21,https://example.omron.test/notices/DN-2020-1028,2026-05-19 04:53:00
+SYN-CS1W-CN626,4539786081394,SYN-CS1,CS1 Rack PLC Unit,CZ,true,SYN-NX102-9001,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-9001,2019-08-28,,2026-02-10 04:23:00
+SYN-CS1W-PA204,4551357297492,SYN-CS1,CS1 Rack PLC Unit,ZZ,true,,,,,2026-05-15 07:46:00
+SYN-CS1W-SCU21,4519470586475,SYN-CS1,CS1 Rack PLC Unit,ZZ,true,SYN-NX102-1200,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-1200,2024-10-09,,2026-04-11 23:00:00
+SYN-E2E-X10D1-N,4532565768280,SYN-E2E,E2E Proximity Sensor,,true,,,,,2026-07-21 21:16:00
+SYN-E2E-X10E1-N,4598688504979,SYN-E2E,E2E Proximity Sensor,,true,,,,,2026-05-12 05:03:00
+SYN-E2E-X10ME1,4591222627451,SYN-E2E,E2E Proximity Sensor,,true,,,,,2026-07-21 00:27:00
+SYN-E2E-X18ME1,4519990602679,SYN-E2E,E2E Proximity Sensor,,false,,,,,2026-05-20 12:46:00
+SYN-E2E-X2D1-N,4552103315719,SYN-E2E,E2E Proximity Sensor,,true,,,,,2026-01-01 04:28:00
+SYN-E2E-X2E1-N,4558611572643,SYN-E2E,E2E Proximity Sensor,,true,,,,,2026-05-21 10:58:00
+SYN-E2E-X2ME1,4555879672878,SYN-E2E,E2E Proximity Sensor,CY,true,SYN-E2E-X10E1-N,https://example.omron.test/en/us/products/family/syn-e2e/SYN-E2E-X10E1-N,2027-03-31,https://example.omron.test/notices/DN-2026-1009,2026-05-01 11:31:00
+SYN-E2E-X5D1-N,4517654089279,SYN-E2E,E2E Proximity Sensor,,true,,,,,2026-08-05 04:54:00
+SYN-E2E-X5E1-N,4542750522108,SYN-E2E,E2E Proximity Sensor,,true,,,,,2026-06-29 02:21:00
+SYN-E2E-X5ME1,4596111166615,SYN-E2E,E2E Proximity Sensor,CZ,true,SYN-E2E-X10E1-N,https://example.omron.test/en/us/products/family/syn-e2e/SYN-E2E-X10E1-N,2021-01-17,https://example.omron.test/notices/DN-2021-1010,2026-03-11 16:50:00
+SYN-E3Z-D61,4507827872232,SYN-E3Z,E3Z Photoelectric Sensor,CY,true,SYN-E3Z-T61,https://example.omron.test/en/us/products/family/syn-e3z/SYN-E3Z-T61,2027-03-31,https://example.omron.test/notices/DN-2026-1008,2026-02-27 11:41:00
+SYN-E3Z-D62,4590568770549,SYN-E3Z,E3Z Photoelectric Sensor,,true,,,,,2026-05-07 12:43:00
+SYN-E3Z-D81,4525282443511,SYN-E3Z,E3Z Photoelectric Sensor,,true,,,,,2026-02-09 00:21:00
+SYN-E3Z-D82,4598210298967,SYN-E3Z,E3Z Photoelectric Sensor,,true,,,,,2026-06-23 07:05:00
+SYN-E3Z-LS61,4599566002216,SYN-E3Z,E3Z Photoelectric Sensor,,true,,,,,2026-05-13 05:49:00
+SYN-E3Z-LS81,4543170127129,SYN-E3Z,E3Z Photoelectric Sensor,,true,,,,,2026-05-17 23:26:00
+SYN-E3Z-R61,4595920640726,SYN-E3Z,E3Z Photoelectric Sensor,CZ,true,SYN-E3Z-D62,https://example.omron.test/en/us/products/family/syn-e3z/SYN-E3Z-D62,2021-10-28,,2026-04-25 17:02:00
+SYN-E3Z-R81,4507423138901,SYN-E3Z,E3Z Photoelectric Sensor,CZ,true,,,,,2026-03-14 11:10:00
+SYN-E3Z-T61,4530119952267,SYN-E3Z,E3Z Photoelectric Sensor,,true,,,,,2026-02-23 05:44:00
+SYN-E3Z-T62,4505554617390,SYN-E3Z,E3Z Photoelectric Sensor,ZX,true,SYN-E3Z-D62,https://example.omron.test/en/us/products/family/syn-e3z/SYN-E3Z-D62,2024-12-22,https://example.omron.test/notices/DN-2024-1006,2026-05-17 17:23:00
+SYN-E3Z-T81,4532385857495,SYN-E3Z,E3Z Photoelectric Sensor,,true,,,,,2026-06-30 23:29:00
+SYN-E3Z-T82,4531887115921,SYN-E3Z,E3Z Photoelectric Sensor,ZX,true,SYN-E3Z-D81,https://example.omron.test/en/us/products/family/syn-e3z/SYN-E3Z-D81,2020-01-20,https://example.omron.test/notices/DN-2020-1007,2026-05-25 14:25:00
+SYN-F430-F000M03M,4594139066876,SYN-F430,F430 Smart Camera,CY,true,SYN-F430-F000N12M,https://example.omron.test/en/us/products/family/syn-f430/SYN-F430-F000N12M,2027-09-30,https://example.omron.test/notices/DN-2026-1019,2026-06-17 12:15:00
+SYN-F430-F000M12M,4538981029037,SYN-F430,F430 Smart Camera,,true,,,,,2026-03-21 03:26:00
+SYN-F430-F000N03M,4579759919158,SYN-F430,F430 Smart Camera,CZ,true,SYN-F440-F000N03M,https://example.omron.test/en/us/products/family/syn-f440/SYN-F440-F000N03M,2021-01-18,https://example.omron.test/notices/DN-2021-1020,2026-03-05 23:59:00
+SYN-F430-F000N12M,4568750125231,SYN-F430,F430 Smart Camera,,true,,,,,2026-04-16 12:08:00
+SYN-G9SP-N10D,4540335338150,SYN-G9SP,G9SP Safety Controller,,true,,,,,2026-07-02 02:26:00
+SYN-G9SP-N10S,4572375506114,SYN-G9SP,G9SP Safety Controller,CY,true,SYN-G9SP-N10D,https://example.omron.test/en/us/products/family/syn-g9sp/SYN-G9SP-N10D,2027-03-31,https://example.omron.test/notices/DN-2026-1017,2026-02-22 17:51:00
+SYN-G9SP-N20D,4556135729774,SYN-G9SP,G9SP Safety Controller,,true,,,,,2026-08-01 13:29:00
+SYN-G9SP-N20S,4517531129676,SYN-G9SP,G9SP Safety Controller,,true,,,,,2026-06-13 18:08:00
+SYN-G9SP-N40S,,SYN-G9SP,G9SP Safety Controller,,false,,,,,2026-03-24 08:49:00
+SYN-NA5-12W101S,4524093217977,SYN-NA5,NA5 HMI Programmable Terminal,,true,,,,,2026-07-14 20:10:00
+SYN-NA5-15W101S,4556444212960,SYN-NA5,NA5 HMI Programmable Terminal,,true,,,,,2026-05-16 21:18:00
+SYN-NA5-7W001B,4505263028662,SYN-NA5,NA5 HMI Programmable Terminal,CZ,true,SYN-NA5-7W001S,https://example.omron.test/en/us/products/family/syn-na5/SYN-NA5-7W001S,2022-12-23,,2026-01-11 11:00:00
+SYN-NA5-7W001S,4517083030468,SYN-NA5,NA5 HMI Programmable Terminal,,true,,,,,2026-05-18 02:02:00
+SYN-NA5-9W001B,4576074115534,SYN-NA5,NA5 HMI Programmable Terminal,CZ,true,,,2023-06-04,https://example.omron.test/notices/DN-2023-1018,2026-07-10 17:57:00
+SYN-NA5-9W001S,4541889546306,SYN-NA5,NA5 HMI Programmable Terminal,,true,,,,,2026-03-30 15:08:00
+SYN-NX102-1000,4572779766010,SYN-NX102,NX102 Machine Automation Controller,CY,true,SYN-NX102-1300,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-1300,2027-12-31,https://example.omron.test/notices/DN-2026-1003,2026-08-10 09:34:00
+SYN-NX102-1020,4566186794963,SYN-NX102,NX102 Machine Automation Controller,,false,,,,,2026-05-23 19:53:00
+SYN-NX102-1100,4560823311001,SYN-NX102,NX102 Machine Automation Controller,,true,,,,,2026-03-21 21:43:00
+SYN-NX102-1120,4541184581489,SYN-NX102,NX102 Machine Automation Controller,,true,,,,,2026-07-29 00:33:00
+SYN-NX102-1200,4546988628414,SYN-NX102,NX102 Machine Automation Controller,,true,,,,,2026-08-10 03:08:00
+SYN-NX102-1201,4592896730180,SYN-NX102,NX102 Machine Automation Controller,,true,,,,,2026-07-07 02:09:00
+SYN-NX102-1220,4513280671025,SYN-NX102,NX102 Machine Automation Controller,,true,,,,,2026-03-27 08:01:00
+SYN-NX102-1300,4536761559949,SYN-NX102,NX102 Machine Automation Controller,,true,,,,,2026-08-13 20:27:00
+SYN-NX102-1320,4562942796608,SYN-NX102,NX102 Machine Automation Controller,CA,true,,,,,2026-02-01 08:11:00
+SYN-NX102-9000,4519857130432,SYN-NX102,NX102 Machine Automation Controller,,true,,,,,2026-05-31 09:13:00
+SYN-NX102-9001,4504169090086,SYN-NX102,NX102 Machine Automation Controller,,true,,,,,2026-07-29 21:20:00
+SYN-NX102-9020,4503992359016,SYN-NX102,NX102 Machine Automation Controller,CZ,true,SYN-NX102-9120,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-9120,2019-08-22,https://example.omron.test/notices/DN-2019-1001,2026-01-10 23:14:00
+SYN-NX102-9100,4539814683810,SYN-NX102,NX102 Machine Automation Controller,CY,true,SYN-NX102-9001,https://example.omron.test/en/us/products/family/syn-nx102/SYN-NX102-9001,2026-12-31,https://example.omron.test/notices/DN-2026-1002,2026-02-16 17:30:00
+SYN-NX102-9120,4585586021483,SYN-NX102,NX102 Machine Automation Controller,,true,,,,,2026-02-28 13:51:00
+SYN-NX1P2-1040DT,4530236282499,SYN-NX1P2,NX1P2 Machine Controller,,true,,,,,2026-04-14 17:34:00
+SYN-NX1P2-1040DT1,4555205916546,SYN-NX1P2,NX1P2 Machine Controller,,true,,,,,2026-06-01 04:20:00
+SYN-NX1P2-1140DT,4571605877711,SYN-NX1P2,NX1P2 Machine Controller,,true,,,,,2026-06-13 20:40:00
+SYN-NX1P2-1140DT1,4525611404974,SYN-NX1P2,NX1P2 Machine Controller,,true,,,,,2026-01-31 19:00:00
+SYN-NX1P2-9024DT,4508890798258,SYN-NX1P2,NX1P2 Machine Controller,CY,true,SYN-NX1P2-1040DT,https://example.omron.test/en/us/products/family/syn-nx1p2/SYN-NX1P2-1040DT,2026-12-31,https://example.omron.test/notices/DN-2026-1004,2026-07-22 08:57:00
+SYN-NX1P2-9024DT1,4567623673636,SYN-NX1P2,NX1P2 Machine Controller,,true,,,,,2026-05-25 08:06:00
+SYN-NX1P2-9B40DT,4515786750079,SYN-NX1P2,NX1P2 Machine Controller,ZX,true,SYN-NX1P2-1140DT,https://example.omron.test/en/us/products/family/syn-nx1p2/SYN-NX1P2-1140DT,2022-03-11,https://example.omron.test/notices/DN-2022-1005,2026-06-05 00:21:00
+SYN-NX1P2-9B40DT1,4563051521261,SYN-NX1P2,NX1P2 Machine Controller,,true,,,,,2026-04-19 16:31:00
+SYN-R88D-1SN01L,4592120606636,SYN-R88D,1S Series Servo Drive,CY,true,SYN-R88D-1SN08L,https://example.omron.test/en/us/products/family/syn-r88d/SYN-R88D-1SN08L,2027-12-31,https://example.omron.test/notices/DN-2026-1015,2026-06-17 13:39:00
+SYN-R88D-1SN02L,4540892693137,SYN-R88D,1S Series Servo Drive,ZZ,true,SYN-R88D-1SN20F,https://example.omron.test/en/us/products/family/syn-r88d/SYN-R88D-1SN20F,2021-01-21,https://example.omron.test/notices/DN-2021-1016,2026-06-24 08:27:00
+SYN-R88D-1SN04L,4522529637755,SYN-R88D,1S Series Servo Drive,,true,,,,,2026-02-10 06:35:00
+SYN-R88D-1SN08L,4557902059349,SYN-R88D,1S Series Servo Drive,,true,,,,,2026-02-22 07:55:00
+SYN-R88D-1SN10F,4547017839503,SYN-R88D,1S Series Servo Drive,,true,,,,,2026-02-23 20:42:00
+SYN-R88D-1SN15F,4517107326947,SYN-R88D,1S Series Servo Drive,,true,,,,,2026-05-12 19:59:00
+SYN-R88D-1SN20F,4591317084128,SYN-R88D,1S Series Servo Drive,,true,,,,,2026-06-16 14:33:00
+SYN-R88M-1L05030S,4528932558069,SYN-R88M,1S Series AC Servo Motor,,true,,,,,2026-01-12 14:31:00
+SYN-R88M-1L10030S,4549946712139,SYN-R88M,1S Series AC Servo Motor,,true,,,,,2026-07-02 03:01:00
+SYN-R88M-1L20030S,4529420152193,SYN-R88M,1S Series AC Servo Motor,,true,,,,,2026-08-15 04:25:00
+SYN-R88M-1L40030S,4533725847628,SYN-R88M,1S Series AC Servo Motor,,true,,,,,2026-07-06 08:21:00
+SYN-R88M-1L75030S,4535539894822,SYN-R88M,1S Series AC Servo Motor,,false,,,,,2026-06-17 03:51:00
+SYN-R88M-1M05030S,4530526377609,SYN-R88M,1S Series AC Servo Motor,CY,true,SYN-R88M-1L05030S,https://example.omron.test/en/us/products/family/syn-r88m/SYN-R88M-1L05030S,2027-09-30,https://example.omron.test/notices/DN-2026-1013,2026-07-19 05:30:00
+SYN-R88M-1M10030S,4516520661733,SYN-R88M,1S Series AC Servo Motor,CZ,true,SYN-R88M-1L40030S,https://example.omron.test/en/us/products/family/syn-r88m/SYN-R88M-1L40030S,2023-10-12,https://example.omron.test/notices/DN-2023-1014,2026-08-20 04:04:00
+SYN-R88M-1M20030S,4552818368707,SYN-R88M,1S Series AC Servo Motor,,true,,,,,2026-06-03 12:30:00
+SYN-R88M-1M40030S,4557222318305,SYN-R88M,1S Series AC Servo Motor,,true,,,,,2026-02-10 12:06:00
+SYN-S8VK-C06024,0459123400187,SYN-S8VK,S8VK Switch Mode Power Supply,CY,true,SYN-S8VK-G06024,https://example.omron.test/en/us/products/family/syn-s8vk/SYN-S8VK-G06024,2026-12-31,https://example.omron.test/notices/DN-2026-1011,2026-01-10 23:11:00
+SYN-S8VK-C12024,4506401882404,SYN-S8VK,S8VK Switch Mode Power Supply,,true,,,,,2026-04-01 01:21:00
+SYN-S8VK-C24024,4541368550962,SYN-S8VK,S8VK Switch Mode Power Supply,,true,,,,,2026-02-18 17:32:00
+SYN-S8VK-G03024,4578582650698,SYN-S8VK,S8VK Switch Mode Power Supply,ZX,true,SYN-S8VK-G06024,https://example.omron.test/en/us/products/family/syn-s8vk/SYN-S8VK-G06024,2020-04-25,https://example.omron.test/notices/DN-2020-1012,2026-08-04 22:08:00
+SYN-S8VK-G06024,4531751712698,SYN-S8VK,S8VK Switch Mode Power Supply,,true,,,,,2026-04-06 22:27:00
+SYN-S8VK-G12024,4538758339343,SYN-S8VK,S8VK Switch Mode Power Supply,,true,,,,,2026-07-26 00:24:00
+SYN-S8VK-G24024,4522890915003,SYN-S8VK,S8VK Switch Mode Power Supply,,true,,,,,2026-06-18 20:17:00
+SYN-S8VK-G48024,4547027213676,SYN-S8VK,S8VK Switch Mode Power Supply,,true,,,,,2026-05-15 09:59:00

@@ -1,0 +1,80 @@
+# Stibo code -> website label -> customer message.
+#
+# This file is the whole point of keeping stibo_code in the dataset instead of
+# pre-collapsing it to a display label. Today the equivalent logic is a
+# hard-coded if/else in data-table.jsx; here it is configuration, which is what
+# Phase 1 says the target design should consider.
+#
+# Source: Todd's corrected mapping table (Omron_Lifecycle_Handoff_Current_State_v3).
+# UNCONFIRMED items are marked. Do not present them as settled in a demo.
+
+statuses:
+
+  # Blank or "A" is conditional on OAA Live membership. This is Todd's rule and
+  # it is TARGET STATE - it exists in no current system. The oaa_live column in
+  # the synthetic data stands in for a membership source no team has yet named.
+  "":
+    conditional_on: oaa_live
+    when_true:
+      label: "Active"
+      icon: green
+      message: "Product is available and is supported."
+    when_false:
+      label: "Limited Availability"
+      icon: orange
+      message: "Please contact Omron for availability."
+      target_state: true
+  "A":
+    same_as: ""
+
+  "CY":
+    label: "End of Life"
+    api_text: "To-Be Discontinued"   # what the Experience API actually returns
+    icon: orange
+    message: >-
+      Discontinued date announced. Plan migrations and make last buys.
+
+  "CZ":
+    label: "Discontinued"
+    icon: red
+    message: >-
+      Product no longer manufactured or procured. Limited stock until stock out.
+
+  "ZX":
+    label: "Discontinued"
+    icon: red
+    message: >-
+      Product no longer manufactured or procured. Limited stock until stock out.
+
+  "ZZ":
+    label: "Discontinued"
+    icon: red
+    message: >-
+      Product no longer manufactured or procured. Omron has ended support for
+      this product.
+
+# Governed fallback for any code not listed above. Replaces the current
+# behaviour, where an unrecognised value would surface as a raw internal string.
+# "CA" appears in Todd's email but in no mapping table; it is planted in the
+# synthetic data so this branch is actually exercised.
+fallback:
+  label: "Status unavailable"
+  icon: grey
+  message: >-
+    We can't confirm the lifecycle status of this product automatically.
+    Please contact Omron to confirm.
+  log_as: unmapped_status   # every hit here should raise an alert, not just render
+
+# Non-negotiable agent behaviour, kept beside the mapping so the two stay
+# in sync. The lifecycle field is GLOBAL, not Americas.
+disclaimers:
+  scope: >-
+    Lifecycle status reflects worldwide availability, not Americas availability.
+  never_assert:
+    - stock levels or quantity on hand
+    - pricing
+    - lead time or delivery date
+    - regional purchasability ("can I buy this in the US")
+  on_availability_question: >-
+    State the global lifecycle status, then say Americas availability must be
+    confirmed with Omron. Do not infer it from the lifecycle field.

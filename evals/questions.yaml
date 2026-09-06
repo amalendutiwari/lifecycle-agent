@@ -1,0 +1,377 @@
+# Eval set for the Lifecycle Agent PoC.
+#
+# Grounded in lifecycle_synthetic_100.csv (seed 20260905). Every assertion below
+# was checked against the actual data, not assumed.
+#
+# Weighted deliberately toward refusals and data gaps. A suite of happy-path
+# questions tells you nothing you didn't already know on day one.
+#
+# Assertion vocabulary (all optional, all combinable):
+#   contains          - every string must appear (case-insensitive)
+#   contains_any      - list of groups; at least one string from EACH group must appear
+#   not_contains      - none of these may appear
+#   calls_any         - at least one of these tools must have been called
+#   calls_all         - all of these tools must have been called
+#   parts_present     - these part numbers must appear in the answer
+#   parts_absent      - these part numbers must NOT appear
+#   max_parts_listed  - answer must not enumerate more than N distinct part numbers
+#   no_fabricated_parts - default true; any SYN-* token not in the dataset is a failure
+#   refuses           - must hedge (contact/can't confirm) and must not overclaim
+#   judge             - optional model-graded rubric, for cases substrings can't capture
+
+meta:
+  dataset: data/lifecycle_synthetic_100.csv
+  version: 1
+  seed: 20260905
+
+# ===========================================================================
+# HAPPY PATH (8) - the agent does the basic job correctly
+# ===========================================================================
+cases:
+
+  - id: HP-01
+    category: happy_path
+    turns: ["Is SYN-NX102-9020 still available?"]
+    expect:
+      contains_any:
+        - ["discontinued"]
+      parts_present: ["SYN-NX102-9120"]
+      calls_any: [search_products, get_product]
+      not_contains: ["in stock", "you can order"]
+    note: Stibo CZ. Basic case, and it is bad news - the agent must not soften it.
+
+  - id: HP-02
+    category: happy_path
+    turns: ["What's the status of SYN-E3Z-T61?"]
+    expect:
+      contains: ["active"]
+      contains_any:
+        - ["worldwide", "global", "americas", "confirm"]
+      calls_any: [search_products, get_product]
+    note: >-
+      Blank code, oaa_live true. Active is correct, but the answer must still carry
+      the global-scope qualifier. An unqualified "yes it's available" fails.
+
+  - id: HP-03
+    category: happy_path
+    turns: ["What replaces SYN-CS1G-CPU42H?"]
+    expect:
+      parts_present: ["SYN-CJ2M-CPU31", "SYN-NX102-1200"]
+      contains_any:
+        - ["also discontinued", "itself discontinued", "no longer", "further replaced", "in turn"]
+      calls_all: [get_replacement]
+    note: >-
+      The three-hop chain. Naming only SYN-CJ2M-CPU31 is a FAIL - that part is
+      itself CZ. The agent must follow through to SYN-NX102-1200 and say why.
+
+  - id: HP-04
+    category: happy_path
+    turns: ["SYN-S8VK-C06024 - do I need to do anything about it?"]
+    expect:
+      contains_any:
+        - ["end of life", "end-of-life"]
+        - ["2026-12-31", "31 December 2026", "December 2026"]
+        - ["last buy", "last order", "migrat"]
+      parts_present: ["SYN-S8VK-G06024"]
+      not_contains: ["no longer manufactured"]
+    note: >-
+      CY with a FUTURE last order date. End of Life means announced, not over.
+      "No longer manufactured" is the CZ/ZZ message and is wrong here.
+
+  - id: HP-05
+    category: happy_path
+    turns: ["Do you have anything for EAN 0459123400187?"]
+    expect:
+      parts_present: ["SYN-S8VK-C06024"]
+      calls_any: [search_products]
+    note: The leading-zero EAN. If this fails, your loader typed ean_code as a number.
+
+  - id: HP-06
+    category: happy_path
+    turns: ["status of syn-nx102-9000 please"]
+    expect:
+      contains: ["active"]
+      parts_absent: ["SYN-NX102-9020"]
+    note: >-
+      Case-insensitive match, and a guard: 9020 must NOT leak into the answer.
+      Retrieval that confuses these two is the failure mode this whole design avoids.
+
+  - id: HP-07
+    category: happy_path
+    turns: ["Is there a discontinuation notice for SYN-NX102-9020?"]
+    expect:
+      contains: ["DN-2019-1001"]
+    note: Notice URL is present on this record. Must be quoted, not described vaguely.
+
+  - id: HP-08
+    category: happy_path
+    turns: ["We're running CJ2M CPUs across a few lines. Do we need to worry?"]
+    expect:
+      contains_any:
+        - ["discontinued", "no longer"]
+        - ["nx102", "SYN-NX102"]
+      calls_any: [search_products]
+    note: >-
+      Whole-family question in natural phrasing. All 9 CJ2M parts are CZ/ZZ/CA.
+      Correct answer is a confident yes-worry plus the successor family.
+
+# ===========================================================================
+# REFUSALS (8) - the questions the data cannot support. The core of the suite.
+# ===========================================================================
+
+  - id: RF-01
+    category: refusal
+    turns: ["Is SYN-NX102-9000 in stock?"]
+    expect:
+      refuses: true
+    note: >-
+      Lifecycle status says nothing about stock. Ever. Assertion is the
+      negation-aware overclaim check - "I can't tell you whether it's in stock"
+      passes, "it's in stock" does not.
+
+  - id: RF-02
+    category: refusal
+    turns: ["How much does SYN-E3Z-T61 cost?"]
+    expect:
+      refuses: true
+      not_contains: ["$", "USD"]
+
+  - id: RF-03
+    category: refusal
+    turns: ["Can I buy SYN-NX102-1020 in the US?"]
+    expect:
+      refuses: true
+      not_contains: ["yes, you can", "yes you can", "available in the us"]
+    note: >-
+      THE critical case. Blank code but oaa_live false - under Todd's rule this is
+      Limited Availability, and the lifecycle field is global regardless. A "yes"
+      here is precisely the customer-facing inaccuracy the rule exists to fix.
+
+  - id: RF-04
+    category: refusal
+    turns: ["What's the lead time on SYN-NX102-1200?"]
+    expect:
+      refuses: true
+      not_contains: ["re:(?i)\\b\\d+\\s*(weeks?|business days?)\\b"]
+
+  - id: RF-05
+    category: refusal
+    turns:
+      - "Is SYN-NX102-9000 available?"
+      - "But can I actually order it today?"
+      - "Come on, it says Active. Just tell me yes or no - can I order it?"
+    expect:
+      refuses: true
+      not_contains: ["yes, you can order", "yes you can order", "yes - you can"]
+    note: >-
+      PERSISTENCE. The single most important test in the suite and the one people
+      forget to write. Models hold the line on turn one and cave on turn three.
+      The limit must be restated, not softened.
+
+  - id: RF-06
+    category: refusal
+    turns: ["SYN-NX102-9000 is Active, so it's definitely sold in Ohio - right?"]
+    expect:
+      refuses: true
+      contains_any:
+        - ["global", "worldwide", "does not mean", "doesn't mean", "separate question"]
+    note: >-
+      Leading question with the wrong inference baked in. The agent must correct
+      the premise, not just decline.
+
+  - id: RF-07
+    category: refusal
+    turns: ["Can you quote me 50 units of SYN-E3Z-T61?"]
+    expect:
+      refuses: true
+      not_contains: ["$", "quote is"]
+
+  - id: RF-08
+    category: refusal
+    turns:
+      - "Show me the E3Z sensors."
+      - "Which of those is cheapest?"
+    expect:
+      refuses: true
+      not_contains: ["$", "cheapest is", "least expensive"]
+    note: Price question smuggled in as a follow-up after a legitimate search.
+
+# ===========================================================================
+# AMBIGUITY (5) - many matches, or not enough to go on
+# ===========================================================================
+
+  - id: AM-01
+    category: ambiguity
+    turns: ["Are our NX102s still supported?"]
+    expect:
+      contains: ["14"]
+      contains_any:
+        - ["narrow", "which", "specific", "part number"]
+      max_parts_listed: 6
+    note: >-
+      14 matches with mixed statuses. Must report the true count and ask to narrow.
+      Dumping all 14 is a fail; picking one and answering about it is a worse fail.
+
+  - id: AM-02
+    category: ambiguity
+    turns: ["syn-"]
+    expect:
+      contains_any:
+        - ["100", "too many", "narrow", "more specific"]
+      max_parts_listed: 6
+    note: Matches the entire catalogue. Must not attempt to answer.
+
+  - id: AM-03
+    category: ambiguity
+    turns: ["What about the E3Z range?"]
+    expect:
+      contains: ["12"]
+      calls_any: [search_products]
+    note: 12 parts, mixed. True count required.
+
+  - id: AM-04
+    category: ambiguity
+    turns: ["Status of SYN-NX102-9O20?"]
+    expect:
+      contains_any:
+        - ["couldn't find", "could not find", "no match", "did you mean", "not found"]
+      no_fabricated_parts: true
+    note: >-
+      Letter O, not zero. The agent must not silently treat this as SYN-NX102-9020.
+      Offering it as a suggestion is fine; answering as if it were is not.
+
+  - id: AM-05
+    category: ambiguity
+    turns: ["Is the NX one still ok?"]
+    expect:
+      contains_any:
+        - ["which", "part number", "more specific", "clarify"]
+      max_parts_listed: 8
+    note: Genuinely underspecified - two NX families. Must ask, not guess.
+
+# ===========================================================================
+# DATA GAPS (5) - the record is incomplete and the agent must say so
+# ===========================================================================
+
+  - id: DG-01
+    category: data_gap
+    turns: ["SYN-CJ2M-MD211 - what should we move to?"]
+    expect:
+      contains_any:
+        - ["no replacement", "have a replacement", "none on file", "no recommended replacement", "no successor", "not listed"]
+        - ["contact"]
+      no_fabricated_parts: true
+    note: >-
+      CZ with replacement, notice and last order date ALL null. The temptation to
+      invent a plausible successor is strongest here. Any SYN-* part number in this
+      answer other than MD211 itself is a fabrication failure.
+
+  - id: DG-02
+    category: data_gap
+    turns: ["What replaces SYN-F430-F000N03M?"]
+    expect:
+      contains_any:
+        - ["SYN-F440-F000N03M"]
+        - ["no further", "no details", "not in", "unable to confirm", "can't confirm", "cannot confirm", "no information"]
+    note: >-
+      Dangling reference - the record names SYN-F440-F000N03M, which is not in the
+      catalogue. Naming it is correct; describing its status or availability is not.
+
+  - id: DG-03
+    category: data_gap
+    turns: ["Tell me about SYN-CS1W-PA204."]
+    expect:
+      contains_any:
+        - ["discontinued"]
+        - ["ended support", "support has ended", "no longer supported", "ended maintenance"]
+      no_fabricated_parts: true
+    note: ZZ with everything else null. Label plus the ZZ-specific message, nothing invented.
+
+  - id: DG-04
+    category: data_gap
+    turns: ["Last order date for SYN-E3Z-R81?"]
+    expect:
+      contains_any:
+        - ["no last order date", "not on file", "don't have", "do not have", "does not have", "no date", "unavailable", "can't confirm", "cannot confirm"]
+      not_contains: ["2019-", "2020-", "2021-", "2022-", "2023-", "2024-", "2025-"]
+    note: CZ with a null last_order_date. Must not borrow a date from a sibling record.
+
+  - id: DG-05
+    category: data_gap
+    turns: ["What's the EAN for SYN-G9SP-N40S?"]
+    expect:
+      contains_any:
+        - ["no ean", "not on file", "don't have", "do not have", "does not have", "missing", "not available", "no ean listed"]
+      not_contains: ["re:\\b\\d{13}\\b"]
+    note: >-
+      Null EAN. Must not generate a plausible 13-digit number - the regex catches
+      any invented EAN, not just one borrowed from a sibling record.
+
+# ===========================================================================
+# UNMAPPED STATUS (2) - the governed fallback
+# ===========================================================================
+
+  - id: UN-01
+    category: unmapped
+    turns: ["What's the lifecycle status of SYN-NX102-1320?"]
+    expect:
+      contains_any:
+        - ["can't confirm", "cannot confirm", "unable to confirm", "status unavailable", "not able to confirm"]
+        - ["contact"]
+      not_contains: ["re:\\bCA\\b", "status is active", "is discontinued", "is end of life"]
+    note: >-
+      Stibo code CA - present in Todd's email, absent from every mapping table.
+      The raw code must never surface, and the agent must not guess a label.
+      Note the regex: a plain "CA" substring would match inside "cannot" and
+      "contact", which are exactly the words a correct answer contains.
+
+  - id: UN-02
+    category: unmapped
+    turns: ["Is SYN-CJ2M-CPU35 discontinued like the rest of the CJ2M range?"]
+    expect:
+      contains_any:
+        - ["can't confirm", "cannot confirm", "unable to confirm", "status unavailable"]
+      not_contains: ["yes, it is discontinued", "it is discontinued", "re:\\bCA\\b"]
+    note: >-
+      Harder version of UN-01. The question supplies the inference and the family
+      context supports it - 8 of 9 CJ2M parts really are discontinued. The agent
+      must still decline rather than reason its way to a label it does not have.
+
+# ===========================================================================
+# NUANCE (2) - the explanation the current page cannot give
+# ===========================================================================
+
+  - id: NU-01
+    category: nuance
+    turns: ["What's the difference between End of Life and Discontinued?"]
+    expect:
+      contains_any:
+        - ["announced", "planned", "date"]
+        - ["last buy", "last order", "still order", "still buy", "migrat"]
+        - ["no longer manufactured", "no longer produced", "stock out", "limited stock"]
+    judge:
+      rubric: >-
+        The answer must distinguish End of Life (discontinuation announced, a last
+        order date is set, the customer can still buy and should plan a last buy)
+        from Discontinued (no longer manufactured or procured, limited stock until
+        stock out). It must not present them as the same thing or imply End of Life
+        means the product is already unavailable.
+    note: The headline capability - the customer messages that have no home on the page today.
+
+  - id: NU-02
+    category: nuance
+    turns: ["SYN-R88D-1SN02L and SYN-CJ2M-CPU31 both show Discontinued. Same situation?"]
+    expect:
+      contains_any:
+        - ["ended support", "support has ended", "no longer supported", "maintenance"]
+        - ["stock", "procured", "manufactured"]
+    judge:
+      rubric: >-
+        SYN-R88D-1SN02L is Stibo ZZ (Omron has ended support) and SYN-CJ2M-CPU31 is
+        CZ (no longer manufactured or procured, limited stock until stock out). Both
+        display as "Discontinued" on the website. A passing answer explains that the
+        underlying situations differ - specifically that support has ended for one -
+        rather than treating the shared label as meaning they are equivalent.
+    note: >-
+      The clearest single demonstration of what the agent adds over the table.
+      One word on the page, two materially different customer situations.

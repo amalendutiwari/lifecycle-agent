@@ -1,0 +1,6 @@
+.venv/
+.env
+__pycache__/
+logs/*.jsonl
+evals/report.md
+evals/results.json

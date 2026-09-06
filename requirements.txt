@@ -1,0 +1,9 @@
+openai>=2.0
+azure-identity>=1.19
+duckdb>=1.0
+pandas>=2.0
+pyyaml>=6.0
+python-dotenv>=1.0
+pytest>=8.0
+fastapi>=0.115
+uvicorn[standard]>=0.30
