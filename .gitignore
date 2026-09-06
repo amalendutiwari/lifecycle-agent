@@ -4,3 +4,4 @@ __pycache__/
 logs/*.jsonl
 evals/report.md
 evals/results.json
+*.zip
